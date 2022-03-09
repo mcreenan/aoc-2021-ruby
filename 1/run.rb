@@ -1,4 +1,4 @@
-depths = IO.readlines("input").map(&:rstrip).map(&:to_i)
+depths = STDIN.readlines.map(&:rstrip).map(&:to_i)
 
 class Array
     def window(n)
