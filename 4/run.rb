@@ -13,10 +13,10 @@ class BingoBoard
         }
 
         # Horizontal wins
-        return true if board_mask.any? { |row| row.all? true }
+        return true if board_mask.any? { |row| row.all? }
 
         # Vertical wins
-        return true if board_mask.transpose.any? { |row| row.all? true }
+        return true if board_mask.transpose.any? { |row| row.all? }
     end
 end
 
