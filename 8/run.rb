@@ -70,8 +70,8 @@ puts entries.map { |entry|
         end
     end
 
-    # Figure out the mapping for 0 by looking for the 6-segment patterns that don't have a segment where all 5-segment
-    # patterns do have that segment present
+    # Figure out the mapping for 0, 6, and 9 by looking for the 6-segment patterns that don't have a segment where all
+    # 5-segment patterns do have that segment present
     {
         0 => 3,
         6 => 2,
