@@ -72,25 +72,15 @@ puts entries.map { |entry|
 
     # Figure out the mapping for 0 by looking for the 6-segment patterns that don't have a segment where all 5-segment
     # patterns do have that segment present
-    (0..2).each do |i|
-        if five_segment_patterns.select{ _1.include?(six_sp_om[i].first) }.length == 3
-            signal_pattern_map[six_segment_patterns[i].join] = 0
-        end
-    end
-
-    # Figure out the mapping for 6 by looking for the 6-segment patterns that don't have a segment where 2 of 3
-    # 5-segment patterns do have that segment present
-    (0..2).each do |i|
-        if five_segment_patterns.select{ _1.include?(six_sp_om[i].first) }.length == 2
-            signal_pattern_map[six_segment_patterns[i].join] = 6
-        end
-    end
-
-    # Figure out the mapping for 9 by looking for the 6-segment patterns that don't have a segment where 1 of 3
-    # 5-segment patterns do have that segment present
-    (0..2).each do |i|
-        if five_segment_patterns.select{ _1.include?(six_sp_om[i].first) }.length == 1
-            signal_pattern_map[six_segment_patterns[i].join] = 9
+    {
+        0 => 3,
+        6 => 2,
+        9 => 1,
+    }.each do |digit, required_segments|
+        (0..2).each do |i|
+            if five_segment_patterns.select{ _1.include?(six_sp_om[i].first) }.length == required_segments
+                signal_pattern_map[six_segment_patterns[i].join] = digit
+            end
         end
     end
 
